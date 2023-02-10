@@ -39,7 +39,6 @@ const App = () => {
     copy[selected] += 1
     setVotes(copy)
     setSelected(selected)
-    console.log(votes)
     setVote(updatedVote + 1)
   }
 
