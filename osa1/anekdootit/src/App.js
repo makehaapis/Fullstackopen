@@ -4,7 +4,7 @@ const Line = (props) => {
   return(
     <div>
       <p>{props.text}</p>
-      <p>{props.value}</p>
+      <p>has {props.value} votes</p>
     </div>
   )
 }
@@ -53,11 +53,25 @@ const App = () => {
     }
   }
 
+  const indefOfMostVotes = (votes) => {
+    var max = votes[0]
+    var maxIndex = 0
+    for (var i = 1; i < votes.length; i++) {
+      if (votes[i] > max) {
+        maxIndex = i;
+        max = votes[i]
+      }
+    }
+    return maxIndex;
+  }
+
   return (
     <div>
       <Line text={anecdotes[selected]} value={votes[selected]}/>
       <Button handleClick={handleVoteClick} text="vote"/>
       <Button handleClick={handleNextClick} text="next anecdote"/>
+      <h1>Anecdote with most votes</h1>
+      <Line text={anecdotes[indefOfMostVotes(votes)]} value={votes[indefOfMostVotes(votes)]}/>
     </div>
   )
 }
