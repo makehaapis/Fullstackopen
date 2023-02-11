@@ -1,47 +1,24 @@
-import { useState } from 'react'
-
-const Filter = ({handleSearchStringChange},{searchString}) => {
-  return(
-  <div>filter shown with<input value={searchString} onChange={handleSearchStringChange}></input></div>
-  )
-}
-
-const Person = ({person}) => {
-  return (
-    <table>
-    <tbody>
-          <tr>
-            <td>{person.name}</td>
-            <td>{person.number}</td>
-          </tr>
-        </tbody>
-    </table>
-  )
-}
-
-const Persons = (props) => {
-  const persons = props.persons
-  const searchString = props.searchString.toLowerCase()
-  return(
-  <div>
-    {persons.filter(persons => persons.name.toLowerCase().includes(searchString)).map(person=> (
-    <Person key={person.name} person={person}/>
-    ))}
-  </div>
-  )
-}
+import { useState, useEffect } from 'react'
+import Persons from './components/Persons'
+import Filter from './components/Filter'
+import axios from 'axios'
 
 const App = () => {
-  const [persons, setPersons] = useState([
-      { name: 'Arto Hellas', number: '040-123456' },
-      { name: 'Ada Lovelace', number: '39-44-5323523' },
-      { name: 'Dan Abramov', number: '12-43-234345' },
-      { name: 'Mary Poppendieck', number: '39-23-6423122' }
-  ])
-
+  const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [searchString, setSearchString] = useState('')
+
+  useEffect(() => {
+    console.log('effect')
+    axios
+      .get('http://localhost:3001/persons')
+      .then(response => {
+        console.log('promise fulfilled')
+        setPersons(response.data)
+      })
+  }, [])
+  console.log('render', persons.length, 'persons')
 
   const addPerson = (event) => {
     event.preventDefault()
@@ -86,7 +63,7 @@ const App = () => {
         <div>name: <input value={newName} onChange={handleNameChange}/></div>
         <div>number: <input value={newNumber} onChange={handleNumberChange}/></div>
         <div><button type="submit">add</button></div>
-      </form>
+        </form>
       <h2>Numbers</h2>
       <Persons persons={persons} searchString={searchString}/>
     </div>
