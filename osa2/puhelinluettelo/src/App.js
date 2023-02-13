@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Person from './components/Person'
 import Filter from './components/Filter'
+import InputFields from './components/InputFields'
 import personService from './services/persons'
 
 const App = () => {
@@ -8,6 +9,7 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [searchString, setSearchString] = useState('')
+  const [Message, setMessage] = useState(null)
 
   useEffect(() => {
     personService
@@ -23,7 +25,6 @@ const App = () => {
       name: newName,
       number: newNumber
     }
-    console.log(personObject)
     let nameFound =  false;
     persons.forEach(person => {
       if (person.name.toLowerCase() === newName.toLowerCase()) {
@@ -40,6 +41,10 @@ const App = () => {
           setPersons(persons.concat(returnedPerson))
           setNewName('')
           setNewNumber('')
+          setMessage(`Added ${personObject.name}`)
+          setTimeout(() => {
+            setMessage(null)
+          }, 5000)
       }) 
     }
   }
@@ -51,51 +56,82 @@ const App = () => {
     .update(person.id, changedPerson)
     .then(returnedPerson => {
       setPersons(persons.map(person => person.id !== id ? person : returnedPerson))
+      setMessage(`Updated ${person.name}'s number`)
+      setTimeout(() => {
+        setMessage(null)
+      }, 5000)
     })
     .catch(error => {
-      alert(
-        `the person '${person.name}' was already deleted from server`
+      if (error.response) {
+      setMessage(
+        `Person '${person.name}' was already removed from server`
       )
-      setPersons(persons.filter(p => p.id !== id))
+      console.clear()
+      setTimeout(() => {
+        setMessage(null)
+      }, 5000)
+      setPersons(persons.filter(n => n.id !== id))
+    }
     })
   }
 
   const handleNameChange = (event) => {
-    console.log(event.target.value)
     setNewName(event.target.value)
   }
 
   const handleNumberChange = (event) => {
-    console.log(event.target.value)
     setNewNumber(event.target.value)
   }
 
   const handleSearchStringChange = (event) => {
     setSearchString(event.target.value)
-    console.log(searchString)
   }
 
   const deletePerson = (id) => {
-    if (window.confirm("Press a button!") === true) {
       const person = persons.find(person => person.id === id)
+      if (window.confirm(`Are you sure you want to delete ${person.name}?`) === true) {
       personService
         .del(person.id)
         personService
         .getAll()
         .then(initialPersons => {
           setPersons(initialPersons)
-          console.log(persons)
+          setMessage(`Deleted ${person.name}`)
+          setTimeout(() => {
+            setMessage(null)
+          }, 5000) 
       })
     }
+  }
+
+  const Notification = ({ message }) => {
+    if (message === null) {
+      return null
+    }
+    else if (message.substring(0,6) === 'Person')
+    {
+      return(
+      <div className="error">
+      {message}
+    </div>
+    )
+    }
+    else {
+    return (
+      <div className="notification">
+        {message}
+      </div>
+    )
+  }
   }
 
   return (
     <div>
       <h1>Phonebook</h1>
+      <Notification message={Message} />
       <Filter handleSearchStringChange={handleSearchStringChange} searchString={searchString}/>
       <form onSubmit={addPerson}>
-        <div>name: <input value={newName} onChange={handleNameChange}/></div>
-        <div>number: <input value={newNumber} onChange={handleNumberChange}/></div>
+        <InputFields newName={newName} newNumber={newNumber} handleNameChange={handleNameChange} handleNumberChange={handleNumberChange}/>
         <div><button type="submit">add</button></div>
       </form>
       <h2>Numbers</h2>
