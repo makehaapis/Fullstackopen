@@ -1,8 +1,9 @@
 import axios from 'axios'
-const baseUrl = 'https://fullstackopen-puhelinluettelo-backend.onrender.com/api/persons'
+const baseUrl = '/api/persons'
 
 const getAll = () => {
   const request = axios.get(baseUrl)
+  console.log(request)
   return request.then(response => response.data)
 }
 

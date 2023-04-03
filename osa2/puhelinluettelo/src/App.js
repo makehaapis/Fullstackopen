@@ -45,7 +45,10 @@ const App = () => {
           setTimeout(() => {
             setMessage(null)
           }, 5000)
-      }) 
+      })
+      .catch(error => {
+        setMessage(`ERROR: ${JSON.stringify(error.response.data)} !!!!!`)
+      })
     }
   }
 
@@ -64,7 +67,7 @@ const App = () => {
     .catch(error => {
       if (error.response) {
       setMessage(
-        `Person '${person.name}' was already removed from server`
+        `${error.response.data}`
       )
       console.clear()
       setTimeout(() => {
