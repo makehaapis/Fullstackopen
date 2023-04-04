@@ -63,14 +63,10 @@ const mostLikes = (blogs) => {
             value[current.author] = value[current.author] ? value[current.author] + current.likes : current.likes;
             return value;
         }, {});
-      
         const result = Object.keys(blog).map((key) => ({
             author: key,
             likes: blog[key]
         }));
-        
-        console.log(result)
-
         var blogWithMostLikes = result.reduce((max, blog) => max.likes > blog.likes ? max : blog)
         
         return blogWithMostLikes
