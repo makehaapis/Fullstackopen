@@ -1,6 +1,6 @@
 import Togglable from './Togglable'
 import { useState } from 'react'
-//import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 const Blog = ({ blog, username, likeBlog, removeBlog }) => {
   const [likes, setLikes] = useState(blog.likes)
@@ -12,12 +12,12 @@ const Blog = ({ blog, username, likeBlog, removeBlog }) => {
     marginBottom: 5
   }
 
-  /*Blog.propTypes = {
+  Blog.propTypes = {
     blog: PropTypes.object.isRequired,
     username: PropTypes.string.isRequired,
     likeBlog: PropTypes.func.isRequired,
     removeBlog: PropTypes.func.isRequired
-  }*/
+  }
 
   const addLikeToBlog = (blog) => {
     likeBlog(blog.id)
@@ -43,7 +43,11 @@ const Blog = ({ blog, username, likeBlog, removeBlog }) => {
   if (!blog.user.username) {
     return (
       <div style={blogStyle}>
-        {blog.title}<Togglable buttonLabel="show">{blog.author} <br></br>{blog.url}<br></br> {likes} <br></br>{username}<br></br></Togglable>
+        <li className='blog'>
+          {blog.title}
+          <Togglable buttonLabel="show">
+            {blog.author} <br></br>{blog.url}<br></br> {likes} <br></br>{username}<br></br></Togglable>
+        </li>
       </div>
     )
   }

@@ -142,9 +142,11 @@ const App = () => {
           <button onClick={logOut}>Log out</button>
           <Notification message={errorMessage} />
           <h2>Blogs</h2>
-          {sortedBlogs.map(blog =>
-            <Blog key={blog.id} blog={blog} username={user.username} likeBlog={addLikeToBlog} removeBlog={deleteBlog}/>
-          )}
+          <ul>
+            {sortedBlogs.map(blog =>
+              <Blog key={blog.id} blog={blog} username={user.username} likeBlog={addLikeToBlog} removeBlog={deleteBlog}/>
+            )}
+          </ul>
           <div>
             <br></br>
           </div>

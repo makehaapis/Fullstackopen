@@ -1,14 +1,14 @@
 import { useState } from 'react'
-//import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 const BlogForm = ({ createBlog }) => {
   const [newTitle, setNewTitle] = useState('')
   const [newUrl, setNewUrl] = useState('')
   const [newAuthor, setNewAuthor] = useState('')
 
-  /*BlogForm.propTypes = {
+  BlogForm.propTypes = {
     createBlog: PropTypes.func.isRequired
-  }*/
+  }
 
   const addBlog = (event) => {
     event.preventDefault()
