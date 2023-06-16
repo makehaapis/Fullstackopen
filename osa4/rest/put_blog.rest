@@ -1,0 +1,10 @@
+PUT http://localhost:3003/api/blogs/648ae7ebaf42557d5c874771
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtheXR0YWphIiwiaWQiOiI2NDQ2M2IzNzNhYzFmNGMzNjk3YjY2YjUiLCJpYXQiOjE2ODY4MjY1NDJ9.dpQ9qu8PmE_owiaOOZkTU1l2cpNIYHGycslr2YkXXGw
+
+{
+    "title": "Toinen blogipostaus",
+    "author":"Marko",
+    "url": "www.www.fi1223",
+    "likes": 121212
+}

@@ -1,22 +1,22 @@
 const Notification = ({ message }) => {
-    if (message === null) {
-      return null
-    }
-    else if (message.substring(0,5) === 'Error')
-    {
-      return(
+  if (message === null) {
+    return null
+  }
+  else if (message.substring(0,5) === 'Error')
+  {
+    return(
       <div className="error">
-      {message}
-    </div>
+        {message}
+      </div>
     )
-    }
-    else {
+  }
+  else {
     return (
       <div className="notification">
         {message}
       </div>
     )
   }
-  }
+}
 
-  export default Notification
+export default Notification
