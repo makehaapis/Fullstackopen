@@ -43,18 +43,17 @@ const Blog = ({ blog, username, likeBlog, removeBlog }) => {
   if (!blog.user.username) {
     return (
       <div style={blogStyle}>
-        <li className='blog'>
-          {blog.title}
-          <Togglable buttonLabel="show">
-            {blog.author} <br></br>{blog.url}<br></br> {likes} <br></br>{username}<br></br></Togglable>
-        </li>
+        {blog.title}
+        <Togglable buttonLabel="show">
+          {blog.author} <br></br>{blog.url}<br></br> {likes} <br></br>{username}<br></br>
+        </Togglable>
       </div>
     )
   }
   else {
     return (
       <div style={blogStyle}>
-        {blog.title}<Togglable buttonLabel="show">{blog.author} <br></br>{blog.url}<br></br> {likes} <button onClick={() => addLikeToBlog(blog)}>Like</button> <br></br>{blog.user.username}<br></br> <DeleteButton blog={blog} username={username}/><br></br></Togglable>
+        <p>{blog.title}</p><Togglable buttonLabel="show"><p>{blog.author}</p><p>{blog.url}</p><p>{likes}</p> <button onClick={() => addLikeToBlog(blog)}>Like</button><p>{blog.user.username}</p><DeleteButton blog={blog} username={username}/></Togglable>
       </div>
     )
   }

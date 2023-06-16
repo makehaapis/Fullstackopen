@@ -29,14 +29,17 @@ const BlogForm = ({ createBlog }) => {
         <p>Title: </p><input
           value={newTitle}
           onChange={event => setNewTitle(event.target.value)}
+          placeholder='write title here'
         />
         Author: <input
           value={newAuthor}
           onChange={event => setNewAuthor(event.target.value)}
+          placeholder='write author here'
         />
         Url: <input
           value={newUrl}
           onChange={event => setNewUrl(event.target.value)}
+          placeholder='write url here'
         />
         <button type="submit">create</button>
       </form>
