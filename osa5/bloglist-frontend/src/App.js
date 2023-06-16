@@ -29,7 +29,6 @@ const App = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault()
-    console.log('logging in with', username, password)
     try {
       const user = await loginService.login({
         username, password,
@@ -41,6 +40,7 @@ const App = () => {
       setUser(user)
       setUsername('')
       setPassword('')
+      console.log('logging in with', username, password)
     } catch (exception) {
       setErrorMessage('Error: wrong credentials')
       setTimeout(() => {
@@ -53,7 +53,7 @@ const App = () => {
     <form onSubmit={handleLogin}>
       <div>
         username
-        <input
+        <input id='username'
           type="text"
           value={username}
           name="Username"
@@ -62,14 +62,14 @@ const App = () => {
       </div>
       <div>
         password
-        <input
+        <input id='password'
           type="password"
           value={password}
           name="Password"
           onChange={({ target }) => setPassword(target.value)}
         />
       </div>
-      <button type="submit">login</button>
+      <button id="login-button" type="submit">login</button>
     </form>
   )
 
@@ -105,7 +105,7 @@ const App = () => {
     if (blogObject.title !== '' && blogObject.author !== '' && blogObject.url !== '') {
       blogService.create(blogObject)
         .then(returnedBlog => {setBlogs(blogs.concat(returnedBlog))
-          setErrorMessage(`a new blog ${blogObject.title} by ${blogObject.author}`)
+          setErrorMessage(`a new blog ${returnedBlog.title} by ${returnedBlog.author}`)
           setTimeout(() => {
             setErrorMessage(null)
           }, 5000)
@@ -131,6 +131,7 @@ const App = () => {
   return(
     <div>
       <h1>Blogs</h1>
+      <Notification message={errorMessage} />
       {!user &&
         <div>
           {loginForm()}
@@ -138,9 +139,8 @@ const App = () => {
       }
       {user &&
         <div>
-          <p>{user.name}</p>
-          <button onClick={logOut}>Log out</button>
-          <Notification message={errorMessage} />
+          <p>{user.name} is logged in</p>
+          <button id="logoutbtn" onClick={logOut}>Log out</button>
           <h2>Blogs</h2>
           {sortedBlogs.map(blog =>
             <Blog key={blog.id} blog={blog} username={user.username} likeBlog={addLikeToBlog} removeBlog={deleteBlog}/>
