@@ -8,11 +8,14 @@ const AnecdoteList = () => {
     dispatch(addVote(id))
   }
 
-  const anecdotes = useSelector(state => state)
-  const sortedAnecdotes = [...anecdotes].sort((a, b) =>
+    const searchstring = useSelector(state => state.filter)
+    const anecdotes = useSelector(state => state.anecdotes)
+
+    const sortedAnecdotes = [...anecdotes].sort((a, b) =>
         a.votes > b.votes ? -1 : 1,
     )
 
+  if (searchstring === 'ALL') {
   return(
     <div>
     <h2>Anecdotes</h2>
@@ -29,6 +32,25 @@ const AnecdoteList = () => {
     )}
     </div>
   )
+} else {
+    return(
+        <div>
+        <h2>Anecdotes</h2>
+        {sortedAnecdotes.filter(anecdotes => anecdotes.content.toLowerCase().includes(searchstring.toLowerCase())).map(anecdote =>
+          <div key={anecdote.id}>
+            <div>
+              {anecdote.content}
+            </div>
+            <div>
+              has {anecdote.votes}
+              <button onClick={() => vote(anecdote.id)}>vote</button>
+            </div>
+          </div>
+        )}
+        </div>
+      )
 }
+}
+
 
 export default AnecdoteList
