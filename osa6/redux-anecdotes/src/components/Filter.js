@@ -1,5 +1,5 @@
 import { filterChange } from '../reducers/filterReducer'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch} from 'react-redux'
 
 const Filter = () => {
 
@@ -16,8 +16,6 @@ const Filter = () => {
     const style = {
       marginBottom: 10
     }
-    
-    const searchstring = useSelector(state => state.filter)
     
     return (
       <div style={style}>
