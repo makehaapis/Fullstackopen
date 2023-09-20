@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import {addVote} from '../reducers/anecdoteReducer'
+import { voteAnecdote } from '../reducers/anecdoteReducer'
 import { addNotification } from '../reducers/notificationReducer'
 
 const AnecdoteList = () => {
@@ -12,13 +12,11 @@ const AnecdoteList = () => {
         a.votes > b.votes ? -1 : 1,
     )
 
-    const vote = (id) => {
-      dispatch(addVote(id))
-      
-    }
-
-    const voteNotification = (content) => {
-      dispatch(addNotification(`You voted for '${content}'`))
+    const vote = (anecdote) => {
+      dispatch(voteAnecdote(anecdote))
+      dispatch(addNotification(`new anecdote '${anecdote.content}'`))
+      dispatch(addNotification(`You voted for '${anecdote.content}'`))
+      //dispatch(setNotification(`you voted '${anecdote.content}'`, 10))
     }
 
   if (searchstring === 'ALL') {
@@ -32,7 +30,7 @@ const AnecdoteList = () => {
         </div>
         <div>
           has {anecdote.votes}
-          <button onClick={() => {voteNotification(anecdote.content); vote(anecdote.id)}}>vote</button>
+          <button onClick={() => vote(anecdote )}>vote</button>
         </div>
       </div>
     )}
@@ -49,7 +47,7 @@ const AnecdoteList = () => {
             </div>
             <div>
               has {anecdote.votes}
-              <button onClick={() => {voteNotification(anecdote.content); vote(anecdote.id)}}>vote</button>
+              <button onClick={() =>  vote(anecdote)}>vote</button>
             </div>
           </div>
         )}

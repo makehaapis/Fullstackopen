@@ -11,6 +11,9 @@ const Filter = () => {
         if (searchstring) {
             dispatch(filterChange(searchstring))
         }
+        else {
+          dispatch(filterChange('ALL'))
+        }
       }
 
     const style = {
