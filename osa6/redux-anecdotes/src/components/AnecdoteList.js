@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { voteAnecdote } from '../reducers/anecdoteReducer'
-import { addNotification } from '../reducers/notificationReducer'
+import { setNotification } from '../reducers/notificationReducer'
 
 const AnecdoteList = () => {
   const dispatch = useDispatch()
@@ -14,13 +14,11 @@ const AnecdoteList = () => {
 
     const vote = (anecdote) => {
       dispatch(voteAnecdote(anecdote))
-      dispatch(addNotification(`new anecdote '${anecdote.content}'`))
-      dispatch(addNotification(`You voted for '${anecdote.content}'`))
-      //dispatch(setNotification(`you voted '${anecdote.content}'`, 10))
+      dispatch(setNotification(`you voted '${anecdote.content}'`, 10))
     }
 
-  if (searchstring === 'ALL') {
-  return(
+    if (searchstring === 'ALL') {
+    return(
     <div>
     <h2>Anecdotes</h2>
     {sortedAnecdotes.map(anecdote =>

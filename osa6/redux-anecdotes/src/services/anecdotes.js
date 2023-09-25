@@ -14,7 +14,6 @@ const createNew = async (content) => {
   }
 
 const update = (anecdote) => {
-    console.log(anecdote.id)
     const request = axios.put(`${baseUrl}/${anecdote.id}`, anecdote)
     return request.then(response => response.data)
   }

@@ -6,14 +6,14 @@
       "votes": 0
     },
     {
-      "content": "Adding manpower to a late software project makes it later!",
       "id": "21149",
-      "votes": 0
+      "content": "Adding manpower to a late software project makes it later!",
+      "votes": 1
     },
     {
-      "content": "The first 90 percent of the code accounts for the first 10 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.",
       "id": "69581",
-      "votes": 0
+      "content": "The first 90 percent of the code accounts for the first 10 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.",
+      "votes": 1
     },
     {
       "content": "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
@@ -23,12 +23,12 @@
     {
       "id": "25170",
       "content": "Premature optimization is the root of all evil.",
-      "votes": 1
+      "votes": 6
     },
     {
       "id": "98312",
       "content": "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.",
-      "votes": 4
+      "votes": 18
     },
     {
       "content": "JEJEJE",
@@ -36,9 +36,129 @@
       "id": "lhFh9lR"
     },
     {
+      "id": "Eq07-UJ",
+      "content": "asd",
+      "votes": 1
+    },
+    {
+      "content": "asdsa",
+      "votes": 0,
+      "id": "ygyzQJJ"
+    },
+    {
+      "id": "pBLMSEE",
+      "content": "asdfdsaf",
+      "votes": 1
+    },
+    {
+      "content": "dasdsa",
+      "votes": 0,
+      "id": "-uU8cDI"
+    },
+    {
+      "id": "xt4pOE-",
+      "content": "dsada",
+      "votes": 2
+    },
+    {
+      "content": "asdas",
+      "votes": 0,
+      "id": "0JYFuM1"
+    },
+    {
+      "content": "fdasfdsfasdfdsafds",
+      "votes": 0,
+      "id": "BvYO9oE"
+    },
+    {
+      "content": "asdsad",
+      "votes": 0,
+      "id": "ODPBSsR"
+    },
+    {
+      "content": "asdsa",
+      "votes": 0,
+      "id": "L8vuWdn"
+    },
+    {
+      "content": "asdsadsa",
+      "votes": 0,
+      "id": "v3EJ87j"
+    },
+    {
+      "content": "fdsafdsa",
+      "votes": 0,
+      "id": "UVQoZ8z"
+    },
+    {
+      "content": "fdsaf",
+      "votes": 0,
+      "id": "qlx3BxV"
+    },
+    {
       "content": "asd",
       "votes": 0,
-      "id": "Eq07-UJ"
+      "id": "HRi7iIa"
+    },
+    {
+      "content": "fdsfdsa",
+      "votes": 0,
+      "id": "o09qc1t"
+    },
+    {
+      "content": "dasdsa",
+      "votes": 0,
+      "id": "fzO0FHi"
+    },
+    {
+      "content": "asdsa",
+      "votes": 0,
+      "id": "dVUeGDq"
+    },
+    {
+      "content": "asdsa",
+      "votes": 0,
+      "id": "0L2vYtW"
+    },
+    {
+      "content": "dasda",
+      "votes": 0,
+      "id": "E1TKXfd"
+    },
+    {
+      "content": "sdffasd",
+      "votes": 0,
+      "id": "WFnHAkX"
+    },
+    {
+      "content": "fdsafdsa",
+      "votes": 0,
+      "id": "DF-fdk-"
+    },
+    {
+      "content": "fdsafdsa",
+      "votes": 0,
+      "id": "GRLdhIN"
+    },
+    {
+      "content": "fdasfsa",
+      "votes": 0,
+      "id": "AaP3BHv"
+    },
+    {
+      "content": "asdsa",
+      "votes": 0,
+      "id": "8RqlRP6"
+    },
+    {
+      "content": "dsadsa",
+      "votes": 0,
+      "id": "LXfJ1UF"
+    },
+    {
+      "content": "dsadsa",
+      "votes": 0,
+      "id": "r3uOnE5"
     }
   ]
 }
