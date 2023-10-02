@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import  { useField } from './hooks'
 
 import {
   Routes,
@@ -86,47 +87,59 @@ const Footer = () => (
 )
 
 const CreateNew = (props) => {
+
   const navigate = useNavigate()
 
-  const [content, setContent] = useState('')
-  const [author, setAuthor] = useState('')
-  const [info, setInfo] = useState('')
-
+  const content = useField('text')
+  const author = useField('text')
+  const info = useField('text')
 
   const handleSubmit = (e) => {
     e.preventDefault()
     props.addNew({
-      content,
-      author,
-      info,
+      content: content.value,
+      author: author.value,
+      info: info.value,
       votes: 0
     })
     navigate('/')
+  }
+
+  const reset = (e) => {
+    e.preventDefault()
+    content.reset(e)
+    author.reset(e)
+    info.reset(e)
   }
 
   return (
     <div>
       <h2>create a new anecdote</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+      <div>
           content
-          <input name='content' value={content} onChange={(e) => setContent(e.target.value)} />
+          <input {...content}
+        /> 
         </div>
         <div>
           author
-          <input name='author' value={author} onChange={(e) => setAuthor(e.target.value)} />
+          <input {...author}
+        /> 
         </div>
         <div>
-          url for more info
-          <input name='info' value={info} onChange={(e)=> setInfo(e.target.value)} />
+          info
+          <input {...info}
+        /> 
         </div>
         <button>create</button>
+        <button onClick={(reset)}>reset</button>
       </form>
     </div>
   )
 }
 
 const App = () => {
+
   const [anecdotes, setAnecdotes] = useState([
     {
       content: 'If it hurts, do it more often',
@@ -147,6 +160,7 @@ const App = () => {
   const [notification, setNotification] = useState('')
 
   const addNew = (anecdote) => {
+    console.log(anecdote)
     anecdote.id = Math.round(Math.random() * 10000)
     setAnecdotes(anecdotes.concat(anecdote))
     setNotification(`a new anecdote ${anecdote.content} created`)
@@ -185,7 +199,7 @@ const App = () => {
         <Routes>
           <Route path="/about" element={<About/>} />
           <Route path="/" element={<AnecdoteList anecdotes={anecdotes}/>} />
-          <Route path="/create" element={<CreateNew addNew={addNew}/>} />
+          <Route path="/create" element={<CreateNew addNew={addNew} />} />
           <Route path="/anecdotes/:id" element={<Anecdote anecdote={anecdote} />} />
         </Routes>
       </div>
