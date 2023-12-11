@@ -2,11 +2,11 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import NewBlogForm from './NewBlogForm'
+import NewBlog from './NewBlog'
 
 it('when blog is created, callback has correct data', () => {
   const onCreate = jest.fn()
-  render(<NewBlogForm onCreate={onCreate} />)
+  render(<NewBlog onCreate={onCreate} />)
 
   const blogToCreate = {
     author: 'Kalle Ilves',

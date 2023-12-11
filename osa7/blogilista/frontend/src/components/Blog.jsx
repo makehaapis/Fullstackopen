@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 const Blog = ({ blog, like, canRemove, remove }) => {
   const [visible, setVisible] = useState(false)
-
   const style = {
     marginBottom: 2,
     padding: 5,
@@ -23,7 +22,7 @@ const Blog = ({ blog, like, canRemove, remove }) => {
           <div>
             likes {blog.likes} <button onClick={like}>like</button>
           </div>
-          <div>{blog.user && blog.user.name}</div>
+          <div>{blog.user.username}</div>
           {canRemove && <button onClick={remove}>delete</button>}
         </div>
       )}
