@@ -1,7 +1,7 @@
-post http://localhost:3003/api/login
+post http://localhost:3003/api/users
 Content-Type: application/json
 
 {
-    "username": "makehaapis",
-    "password": "salasana123"
+    "username": "makehaapis2",
+    "password": "salasana1234"
 }

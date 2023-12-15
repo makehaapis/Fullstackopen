@@ -11,6 +11,8 @@ const notificationSlice = createSlice({
     }
 })
 
+export const {addNotification}  = notificationSlice.actions
+
 export const setNotification = (notification) => {
     return dispatch => {
       dispatch(addNotification(notification))
@@ -20,5 +22,5 @@ export const setNotification = (notification) => {
     }
   }
 
-export const {addNotification}  = notificationSlice.actions
+
 export default notificationSlice.reducer

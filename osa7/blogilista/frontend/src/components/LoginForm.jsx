@@ -1,8 +1,36 @@
-import { useState } from 'react'
+/*import { useState } from 'react'
+import loginService from '../services/login'
+import { useDispatch } from 'react-redux'
+import { setUser } from '../reducers/userReducer'
+import {storageService} from '../services/storage'
+import { setNotification } from '../reducers/notificationReducer'
 
-const LoginForm = ({ onLogin }) => {
+const LoginForm = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+
+  const dispatch = useDispatch()
+
+  const onLogin = async (username, password) => {
+    try {
+      const user = await loginService.login({ username, password })
+      dispatch(setUser(user))
+      storageService.saveUser(user)
+      const notification = {
+        message: `welcome!`,
+        error: false,
+        time: 5,
+      }
+      dispatch(setNotification(notification))
+    } catch (e) {
+      const notification = {
+        message: `wrong username or password`,
+        error: true,
+        time: 5,
+      }
+      dispatch(setNotification(notification))
+    }
+  }
 
   const handleSubmit = (event) => {
     console.log(username, password)
@@ -40,4 +68,4 @@ const LoginForm = ({ onLogin }) => {
   )
 }
 
-export default LoginForm
+export default LoginForm*/

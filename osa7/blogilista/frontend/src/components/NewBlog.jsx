@@ -1,51 +1,67 @@
-import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { createBlog } from '../reducers/blogReducer'
+import { setNotification } from '../reducers/notificationReducer'
 
-const BlogForm = ({ createBlog }) => {
-  const [title, setTitle] = useState('')
-  const [author, setAuthor] = useState('')
-  const [url, setUrl] = useState('')
+const NewBlogFormi = () => {
+    const dispatch = useDispatch()
 
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-    await createBlog({ title, author, url })
-  }
+    const addBlog = async (event) => {
+        event.preventDefault()
+        const title = event.target.title.value
+        const author = event.target.author.value
+        const url = event.target.url.value
+        const blog = {
+          title: title,
+          author: author,
+          url: url,
+        }
+        if (title && author && url ) {
+          event.target.title.value = ''
+          event.target.author.value = ''
+          event.target.url.value = ''
+          dispatch(createBlog(blog))
+          dispatch(setNotification(`Added anecdote '${title}'`, 10))
+      }
+    }
 
-  return (
-    <div>
-      <h4>Create a new blog</h4>
+/*return (
+<div><h2>create new</h2>
+<form onSubmit={addAnecdote}>
+  <input name="anecdote"/> 
+  <button type="submit">add</button>
+</form>
+</div>)
+}*/
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          title
-          <input
-            id="title"
-            placeholder="title"
-            value={title}
-            onChange={({ target }) => setTitle(target.value)}
-          />
-        </div>
-        <div>
-          author
-          <input
-            id="author"
-            placeholder="author"
-            value={author}
-            onChange={({ target }) => setAuthor(target.value)}
-          />
-        </div>
-        <div>
-          url
-          <input
-            id="url"
-            placeholder="url"
-            value={url}
-            onChange={({ target }) => setUrl(target.value)}
-          />
-        </div>
-        <button type="submit">create</button>
-      </form>
-    </div>
-  )
+return (
+  <div>
+    <h4>Create a new blog</h4>
+
+    <form onSubmit={addBlog}>
+      <div>
+        title
+        <input name="title"
+          id="title"
+          placeholder="title"
+        />
+      </div>
+      <div>
+        author
+        <input name="author"
+          id="author"
+          placeholder="author"
+        />
+      </div>
+      <div>
+        url
+        <input name="url"
+          id="url"
+          placeholder="url"
+        />
+      </div>
+      <button type="submit">create</button>
+    </form>
+  </div>
+)
 }
-
-export default BlogForm
+export default NewBlogFormi
